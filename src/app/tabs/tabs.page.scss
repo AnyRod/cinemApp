@@ -1,1 +1,10 @@
-
+ @import "../../theme/variables.scss";
+ion-tab-bar{
+    --background: var(--ion-color-primary);
+    ion-tab-button{
+        img{
+            width: 30px;
+            
+        }
+    }
+}

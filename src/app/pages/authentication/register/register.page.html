@@ -1,9 +1,69 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>register</ion-title>
-  </ion-toolbar>
-</ion-header>
-
+ 
 <ion-content>
 
+  <ion-grid>
+    <!-- Banner -->
+    <ion-row>
+      <ion-col size="10" offset="1" class="banner">
+        <img src="assets\icon\029-cinema.png" class="banner__image">
+        <ion-text color="primary">
+          <span class="banner__title">CinemApp</span>
+        </ion-text>
+      </ion-col>
+    </ion-row>
+
+    <!-- Login Fields -->
+    <ion-row>
+      <ion-col class="fields" size="12">
+        <ion-item class="fields__input">
+          <ion-label color="primary" position="stacked">Nombre y Apellido</ion-label>
+          <ion-input type="text" inputmode="text" placeholder="Pedro Sosa">
+            &nbsp;&nbsp;
+          </ion-input>
+        </ion-item>
+
+        <ion-item class="fields__input">
+          <ion-label color="primary" position="stacked">Correo Electronico</ion-label>
+          <ion-input type="text" inputmode="text" placeholder="someone@example.com">
+            &nbsp;&nbsp;
+          </ion-input>
+        </ion-item>
+        <ion-item class="fields__input" size="12">
+          <ion-label color="primary" position="stacked">Contraseña</ion-label>
+          <ion-input type="password" inputmode="text" placeholder="********">
+            &nbsp;&nbsp;
+          </ion-input>
+        </ion-item>
+      </ion-col>
+
+
+      <ion-col size="12">
+        <ion-button 
+        color="primary"  
+        expand="block"
+        [routerLink]="['/tabs/inicio']"
+        routerDirection="forward">
+          <span>Registrarme</span>
+        </ion-button>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
 </ion-content>
+
+<ion-footer>
+  <ion-row>
+    <ion-col size="12">
+      <ion-button 
+        color="primary"
+        fill="clear" 
+        expand="block"
+        [routerLink]="['/login']"
+        routerDirection="back">
+        <span>Ya tienes cuenta, inicia sesion</span>
+      </ion-button>
+    </ion-col>
+  </ion-row>
+
+</ion-footer>

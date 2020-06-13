@@ -5,7 +5,7 @@
     <!-- Banner -->
     <ion-row>
       <ion-col size="10" offset="1" class="banner">
-        <ion-img src="assets\icon\029-cinema.png" class="banner__image"></ion-img>
+        <img src="assets\icon\029-cinema.png" class="banner__image">
         <ion-text color="primary">
           <span class="banner__title">CinemApp</span>
         </ion-text>
@@ -14,17 +14,54 @@
 
     <!-- Login Fields -->
     <ion-row>
-      <ion-col>
-        <ion-item>
+      <ion-col class="fields" size="12">
+        <ion-item class="fields__input">
           <ion-label color="primary" position="stacked">Correo Electronico</ion-label>
-          <ion-input type="text" inputmode="text"></ion-input>
+          <ion-input type="text" inputmode="text" placeholder="someone@example.com">
+            &nbsp;&nbsp;
+          </ion-input>
         </ion-item>
-        <ion-item>
+        <ion-item class="fields__input" size="12">
           <ion-label color="primary" position="stacked">Contraseña</ion-label>
-          <ion-input type="password" inputmode="text"></ion-input>
+          <ion-input type="password" inputmode="text" placeholder="***************">
+            &nbsp;&nbsp;
+          </ion-input>
         </ion-item>
+      </ion-col>
+
+      <ion-col size="12">
+        <ion-button color="primary" fill="clear" expand="block">
+          <span>¿Olvidaste tu contraseña?</span>
+        </ion-button>
+      </ion-col>
+      <ion-col size="12">
+        <ion-button 
+        color="primary"  
+        expand="block"
+        [routerLink]="['/tabs/inicio']"
+        routerDirection="forward">
+        
+          <span>Iniciar Sesion</span>
+        </ion-button>
+
       </ion-col>
     </ion-row>
   </ion-grid>
 
 </ion-content>
+
+<ion-footer>
+  <ion-row>
+    <ion-col size="12">
+      <ion-button 
+        color="primary" 
+        fill="clear" 
+        expand="block"
+        [routerLink]="['/register']"
+        routerDirection="forward">
+        <span>No tienes cuenta, registrate</span>
+      </ion-button>
+    </ion-col>
+  </ion-row>
+
+</ion-footer>
