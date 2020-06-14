@@ -1,17 +1,28 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <app-card 
+  title="CinemApp" 
+  subtitle="Agenda tus entradas en cualquier momento"
+  [image]="{ src: 'assets/img/kilyan-sockalingum-nW1n9eNHOsc-unsplash.jpg', alt: 'asientos de cine'}">
+    
+  </app-card>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <ion-item class="item_billboard">
+    <ion-thumbnail slot="start" class="thumb">
+      <img src="/assets/icon/008-popcorn.png">
+    </ion-thumbnail>
+    <ion-label>Agrega un bocao</ion-label>
+  </ion-item>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6">
+        <img src="assets/img/eiliv-sonas-aceron-iyqj9IKpQK0-unsplash.jpg" class="goodie" alt="soda">
+      </ion-col>
+      <ion-col size="6">
+        <img src="assets/img/charles-deluvio-PvAAYZx-yf8-unsplash.jpg" class="goodie" alt="palomitas">
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

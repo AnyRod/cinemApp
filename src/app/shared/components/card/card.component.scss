@@ -1,0 +1,23 @@
+ion-card{
+    position: relative;
+    margin-bottom: 10px;
+    .contenido{
+        position: absolute;
+        color: white;
+        padding: 10px;
+        top: 0;
+        background: #00000091;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+
+        h2{
+            font-size: 1.25em;
+        }
+        p{
+            font-size: 0.75em;
+        }
+    }
+}
