@@ -69,7 +69,10 @@
   </ion-grid>
   <div class="complete">
     <ion-button
-     expand="block"  color="primary" [disabled]="productSelected.length === 0">Confirmar Orden</ion-button>
+     expand="block"  
+     color="primary" 
+     [disabled]="productSelected.length === 0" 
+     (click)="accept()">Confirmar Orden</ion-button>
   </div>
   
 </ion-content>

@@ -2,8 +2,11 @@ import { Injectable } from '@angular/core';
 /*import { Peliculas } from '../models/pelicula.interface';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';*/
-import {AngularFirestoreModule, AngularFirestore} from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} from '@angular/fire/firestore';
 import { Orders } from '../models/orders';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { Order } from '../models/order.interface';
 
 
 
@@ -12,31 +15,33 @@ import { Orders } from '../models/orders';
   providedIn: 'root'
 })
 export class OrdersService {
+  
+  orderCollection: AngularFirestoreCollection<Order>;
+  orders: Observable<Order[]>; 
+  order: Observable<Order>;
+ 
 
-  private url = 'https://movieapp-7e0c3.firebaseio.com';
-
-  constructor( private db: AngularFirestore ) { }
-
-  getPeliculas(){}
-
- /* getPeliculas(){
-      return  this.http.get(`${this.url}/peliculas.json`)
-      .pipe(
-        map( this.crearArreglo)
-      );
+  constructor( private db: AngularFirestore ) { 
+    this.orderCollection =  this.db.collection('orders', ref => ref);
   }
-  private crearArreglo( peliculasobj: Object){
-    const peliculas: Peliculas[] = [];
 
-        Object.keys( peliculasobj ).forEach( key => {
-        const pelicula: Peliculas = peliculasobj[key];
-        pelicula.id =key;
-        peliculas.push( pelicula );
-    })
-    if(peliculasobj === null){ return[]; }
-    return peliculas;
+  addOrder(order: Order){
+    this.orderCollection.add(order);
+  }
 
-  }*/
+  getAllOrders():Observable<any[]>{
+    this.orders = this.orderCollection.snapshotChanges().pipe(
+      map( changes => {
+        return changes.map(action => {
+          const data = action.payload.doc.data() as Order;
+          data.id = action.payload.doc.id;
+          return data;
+        });
+      })
+   );
+   return this.orders;
+
+  }
 }
 
 

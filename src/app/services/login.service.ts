@@ -79,5 +79,9 @@ export class LoginService {
        this.userToken = '';
      }
    }
+   estaAutenticado(): boolean{
+         
+    return this.userToken.length > 2;
+   }
 
 }

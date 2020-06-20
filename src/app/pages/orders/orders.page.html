@@ -17,7 +17,7 @@
         <ion-col size="12">
           <ion-item class="item-has-focus">
             <ion-label position="fixed">No. de tickets</ion-label>
-            <ion-select slot="end" [(ngModel)]="numTickect">
+            <ion-select slot="end" (ionChange)="totalProducts($event.target.value,peli.precio)">
               <ion-select-option *ngFor="let opt of '._'.repeat(100).split('_'); index as i">{{i+1}}</ion-select-option>
             </ion-select>
           </ion-item>
@@ -50,7 +50,7 @@
 
        <ion-row>
           <ion-col>
-            <h3 class="total">{{totalProducts() | currency}} DOP.</h3>
+            <h3 class="total">{{total | currency }} DOP.</h3>
           </ion-col>
        </ion-row>
        <ion-row>

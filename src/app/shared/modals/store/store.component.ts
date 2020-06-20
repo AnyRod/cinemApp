@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Products } from '../../../models/product.interface';
+import { Storage } from '@ionic/storage';
+import { Router } from '@angular/router';
+
 
 
 const PRODUCTS = [{"name":"Palomitas","price":900},{"name":"Hot Dog","price":700},{"name":"Combo Doble","price":1100},{"name":"Nachos con queso","price":1600},{"name":"Refresco Grande","price":1500},{"name":"Refresco Mediano","price":1600},{"name":"Refresco pequeño","price":1600}]
@@ -24,7 +27,9 @@ export class StoreComponent implements OnInit {
 
   constructor(
     private modal: ModalController,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private storage: Storage,
+    private router: Router
     ) { }
 
   ngOnInit() {
@@ -43,11 +48,17 @@ export class StoreComponent implements OnInit {
       arrRef.price += product.price;
     } else {
       this.productSelected.push(product);
-      localStorage.setItem('productItem', JSON.stringify(this.productSelected));
+     // localStorage.setItem('productItem', JSON.stringify(this.productSelected));
 
     }
        
   }
+  accept(){
+    this.storage.set('order',JSON.stringify(this.productSelected));
+    this.modal.dismiss();
+
+  }
+
 
   removeProduct(index) {
     

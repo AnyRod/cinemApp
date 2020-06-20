@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { OrdersService } from '../../services/orders.service';
 import { Peliculas } from '../../models/pelicula.interface';
 import { PeliculasService } from '../../services/peliculas.service';
+import { Storage } from '@ionic/storage';
+
 
 
 
@@ -21,59 +23,83 @@ export class OrdersPage implements OnInit {
   orders: Array<any> = new Array<any>();
   numTickect: number;
 
+  arregloArticulos: Array<any>;
+   
+  total =0;
 
 
 
   constructor( 
     private orderService: OrdersService,
-    private peliculaService: PeliculasService) { 
+    private peliculaService: PeliculasService,
+    private storage: Storage
+    ) { 
 
     }
 
   ngOnInit() {
     this.numTickect= 1;
     this.pelicula = this.peliculaService.getPeliculas();
+    this.initStorage();
+    //calculo
+    
 
     //let peli:Array<Peliculas> = new Array<Peliculas>();
     console.log(this.pelicula);
-    // this.pelicula.forEach( movie =>{
-    //   console.log(movie);
-    //   //  peli.push(movie);
-    // })
-    
-  //   if(localStorage.getItem('productItem')){
-  //     this.productselected = JSON.parse(localStorage.getItem('productItem'));
-  //  }
-
-   
+  
     
   }
 
-  totalProducts(){
+  initStorage(){
+    this.storage.get('order').then(value => {
+      if(value){
+        this.productselected = JSON.parse(value);
+        return;
+      }      
+      
+    })
+  }
+
+  totalProducts(qty, precio){
     let total = 0;
     this.productselected.forEach(productItem => {
       total += productItem.price * productItem.quantity;
     });
-    return total;
+    
+    this.total = total + (qty*precio);
+    this.numTickect = qty;
   }
- /* verPelicula(){
 
-    let pelicula: Array<any> = new Array<any>();
-    this.orderService.getPeliculas()
-    .subscribe( resp => {
-      pelicula.push(resp );
+  saveOrder(){
+    this.orderService.addOrder({
+
+      entrada: 0,
+      "metodoPago": 'Paypal',
+      pelicula: 'Avengers End-Game',
+      snack: { 
+        cantidad: 0, precio: this.total, snack: ''
+      }
+      
+      
       
     });
-    return pelicula[0];
-  }*/
-  saveOrder(){
-    
-
-
-    localStorage.setItem('pelicula',JSON.stringify(this.pelicula));
-    //localStorage.setItem('orden',JSON.stringify(this.productselected));
-    //console.log(myOrder);
   }
 
+  tenerPelicula(){
+    let peli: any
+    this.pelicula.forEach(movie => {
+      peli = {
+        horario: movie.horario,
+        imagen: movie.imagen,
+        nombre: movie.nombre,
+        precio: movie.precio,
+        producto: movie.snack
+      };
+    });
+    return peli;
+  }
+ 
+  
+  
   
 }

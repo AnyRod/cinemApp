@@ -10,6 +10,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { IonicStorageModule } from '@ionic/storage';
 
 
 // Firebase Initial Config
@@ -37,7 +38,11 @@ import { SharedModule } from './shared/shared.module';
       SharedModule,
       FormsModule,
       HttpClientModule,
-      AngularFirestoreModule
+      AngularFirestoreModule,
+      IonicStorageModule.forRoot({
+        name: 'cinemApp',
+        driverOrder: ['localstorage']
+      })
     ],
   providers: [
     StatusBar,

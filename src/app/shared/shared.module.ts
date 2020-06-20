@@ -5,6 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { StoreComponent } from './modals/store/store.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 
 const COMPONENTS = [
@@ -22,7 +23,8 @@ const MODALS = [
     CommonModule,
     IonicModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule
   ],
   exports:[
     ...COMPONENTS,

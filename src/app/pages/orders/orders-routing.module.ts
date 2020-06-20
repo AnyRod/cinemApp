@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+
 import { OrdersPage } from './orders.page';
+import { AccessGuard } from '../../guards/access.guard';
 
 const routes: Routes = [
   {
     path: '',
-    component: OrdersPage
+    component: OrdersPage, canActivate: [AccessGuard]
   }
 ];
 
