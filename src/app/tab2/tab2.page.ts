@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {  Storage } from '@ionic/storage';
 import { OrdersService } from '../services/orders.service';
+import { Order } from '../models/order.interface';
+
 
 
 @Component({
@@ -10,6 +11,8 @@ import { OrdersService } from '../services/orders.service';
 })
 export class Tab2Page implements OnInit {
 
+  orders: Order[];
+
   constructor( private orderService: OrdersService) {}
 
   ngOnInit(){
@@ -18,9 +21,7 @@ export class Tab2Page implements OnInit {
 
   getOrder(){
     this.orderService.getAllOrders()
-    .subscribe( order => {
-      console.log(order);
-    });
+    .subscribe( orders => this.orders = orders);
   }
 
   

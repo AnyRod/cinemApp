@@ -1,5 +1,19 @@
 
 
 <ion-content [fullscreen]="true">
+
+    <ion-list>
+        <ion-item class="item_billboard--ticket" color="primary" *ngFor="let ord of orders">
+          <ion-thumbnail slot="start" class="thumb">
+            <img src="assets/icon/003-tickets.png">
+          </ion-thumbnail>
+          <ion-label>
+            <h3>{{ord.pelicula}}</h3>
+            <p>{{ord.horario}}</p>
+          </ion-label>
+        </ion-item>
+    
+       
+      </ion-list>
   
 </ion-content>
