@@ -7,7 +7,7 @@ import { Peliculas } from '../models/pelicula.interface';
 @Injectable({
   providedIn: 'root'
 })
-export class PeliculasService {
+export class PeliculasService {s
 
   constructor( private db: AngularFirestore ) { }
 

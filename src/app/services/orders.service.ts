@@ -1,9 +1,5 @@
 import { Injectable } from '@angular/core';
-/*import { Peliculas } from '../models/pelicula.interface';
-import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';*/
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} from '@angular/fire/firestore';
-import { Orders } from '../models/orders';
+import { AngularFirestore, AngularFirestoreCollection} from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Order } from '../models/order.interface';
