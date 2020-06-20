@@ -1,0 +1,42 @@
+.content{
+    padding: 16px;
+    ion-row{
+        .content__minibanner{
+            display: flex;
+            
+        }
+    }
+}
+
+.cerrar{
+    display: flex;           
+    justify-content: flex-end;
+    
+}
+.column{
+    display: flex;
+    
+}
+
+.btn{
+    height: 50px;   
+}
+
+.btn--special{
+    margin: 0;
+    height: 100%;
+}
+
+.item_billboard--ticket{
+    box-shadow: 1px 3px 2px 1px #0006;
+    border-radius: 10px;
+    .thumb{
+        width: 40px;
+        height: 40px;
+    }
+}
+
+.complete{
+
+    padding: 0 16px;
+}

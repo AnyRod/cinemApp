@@ -1,14 +1,14 @@
 
 
 <ion-content [fullscreen]="true">
-  <app-card 
+  <app-card
   title="CinemApp" 
   subtitle="Agenda tus entradas en cualquier momento"
   [image]="{ src: 'assets/img/kilyan-sockalingum-nW1n9eNHOsc-unsplash.jpg', alt: 'asientos de cine'}">
     
   </app-card>
 
-  <ion-item class="item_billboard">
+  <ion-item class="item_billboard" button (click)="displayModal()">
     <ion-thumbnail slot="start" class="thumb">
       <img src="/assets/icon/008-popcorn.png">
     </ion-thumbnail>
@@ -19,10 +19,62 @@
     <ion-row>
       <ion-col size="6">
         <img src="assets/img/eiliv-sonas-aceron-iyqj9IKpQK0-unsplash.jpg" class="goodie" alt="soda">
+        <div class="divisor">
+          <div>
+            <ion-fab-button class="fab">
+              <ion-icon name="add"></ion-icon>
+            </ion-fab-button>
+            <h3>
+              bebidas
+            </h3>
+          </div>
+        </div>
       </ion-col>
       <ion-col size="6">
         <img src="assets/img/charles-deluvio-PvAAYZx-yf8-unsplash.jpg" class="goodie" alt="palomitas">
+        <div class="divisor">
+          <div>
+            <ion-fab-button class="fab">
+              <ion-icon name="add"></ion-icon>
+            </ion-fab-button>
+            <h3>
+              picaderas
+            </h3>
+          </div>
+        </div>
       </ion-col>
     </ion-row>
   </ion-grid>
+
+  <ion-list>
+    <ion-item class="item_billboard--ticket" color="primary">
+      <ion-thumbnail slot="start" class="thumb">
+        <img src="assets/icon/003-tickets.png">
+      </ion-thumbnail>
+      <ion-label>
+        <h3>Avengers End-Game</h3>
+        <p>4:00 P.M. - 7:00 P.M. </p>
+      </ion-label>
+    </ion-item>
+
+    <ion-item class="item_billboard--ticket" color="primary">
+      <ion-thumbnail slot="start" class="thumb">
+        <img src="assets/icon/003-tickets.png">
+      </ion-thumbnail>
+      <ion-label>
+        <h3>Avengers End-Game</h3>
+        <p>4:00 P.M. - 7:00 P.M. </p>
+      </ion-label>
+    </ion-item>
+
+    <ion-item class="item_billboard--ticket" color="primary">
+      <ion-thumbnail slot="start" class="thumb">
+        <img src="assets/icon/003-tickets.png">
+      </ion-thumbnail>
+      <ion-label>
+        <h3>Avengers End-Game</h3>
+        <p>4:00 P.M. - 7:00 P.M. </p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>

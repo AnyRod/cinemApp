@@ -1,0 +1,75 @@
+
+<ion-content >
+  <ion-grid class="content" [formGroup]="form">
+    <ion-row>
+      <ion-col size="8" class="content__minibanner">
+        <ion-thumbnail>
+          <img src="/assets/icon/008-popcorn.png">
+        </ion-thumbnail>
+        <h3>Agrega un bocao</h3>      
+      </ion-col>
+      <ion-col size="4" class="cerrar">
+        <ion-button fill="clear" (click)="close()">Cerrar</ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+        <ion-col size="6" class="column">
+          <ion-item position="floating" style="width: 100%;">
+            <ion-label style="display: none;">Selecciona tu Snack</ion-label>
+            <ion-select 
+              placeholder="Personaliza tu combo" 
+              formControlName="product" 
+              style=" max-width: 25em; width: 100%;">
+              <ion-select-option 
+                value="{{product?.name}}"
+                *ngFor="let product of products"
+              >{{product?.name}}</ion-select-option>                 
+              </ion-select>
+          </ion-item>         
+        </ion-col>
+        <ion-col size="3" class="column">
+          <ion-item position="floating" style="width: 100%;">
+            <ion-label style="display: none;">Cantidad</ion-label>
+            <ion-input type="number" formControlName="quantity"></ion-input>
+          </ion-item>
+          
+        </ion-col>
+        <ion-col size="3">
+          <ion-button 
+          color="primary" 
+          expand="block" 
+          class="btn" 
+          [disabled]="quantity.invalid || product.invalid"
+          (click)="addProduct()">
+            <ion-icon name="add" size="large"></ion-icon>
+          </ion-button>        
+
+        </ion-col>
+    </ion-row>
+    <ion-row *ngFor="let prod of productSelected; index as index">
+      <ion-col size="9">
+        <ion-item class="item_billboard--ticket" color="primary">
+          <ion-thumbnail slot="start" class="thumb">
+            <img src="assets/icon/003-tickets.png">
+          </ion-thumbnail>
+          <ion-label>
+            <h3>{{prod.product}}</h3>
+            <p>{{prod.price | currency}} </p>
+          </ion-label>
+        </ion-item>
+        
+      </ion-col>
+      <ion-col size="3">
+        <ion-button class=" btn--special" expand="block" (click)="removeProduct(index)">
+          <ion-icon name="trash" size="large"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <div class="complete">
+    <ion-button
+     expand="block"  color="primary" [disabled]="productSelected.length === 0">Confirmar Orden</ion-button>
+  </div>
+  
+</ion-content>

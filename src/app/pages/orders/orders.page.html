@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs" [text]="''" color="primary"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngFor="let peli of pelicula">
+  <app-card 
+  title="{{peli.nombre}}" 
+  subtitle="{{peli.horario}}"
+  [image]="{ src: peli.imagen, alt: 'Avengers'}">    
+  </app-card>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12">
+          <ion-item class="item-has-focus">
+            <ion-label position="fixed">No. de tickets</ion-label>
+            <ion-select slot="end" [(ngModel)]="numTickect">
+              <ion-select-option *ngFor="let opt of '._'.repeat(100).split('_'); index as i">{{i+1}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>   
+       </ion-row>
+
+       <ion-row>
+         <ion-col size="12">
+          <h1 class="detail"><ion-text color="primary" >Detalles de la orden:</ion-text></h1>
+         </ion-col>        
+       </ion-row>
+     
+       <ion-row >
+        <ion-col size="12">
+          <h1 class="detail--order"><ion-text>Tickets para {{peli.nombre}}<span class="price">${{peli.precio * numTickect}}</span></ion-text></h1>
+         <h1 class="detail--order" *ngFor="let item of productselected"><ion-text>{{item.product}}     <span class="price">${{item.price*item.quantity}}</span></ion-text></h1>
+        </ion-col>        
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="12">
+          <ion-item class="item-has-focus">
+            <ion-label position="fixed" class="payment">Metodo de pago</ion-label>
+            <ion-select slot="end">
+              <ion-select-option *ngFor="let pay of ['Tarjeta', 'PayPal']">{{pay}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>   
+       </ion-row>
+
+       <ion-row>
+          <ion-col>
+            <h3 class="total">{{totalProducts() | currency}} DOP.</h3>
+          </ion-col>
+       </ion-row>
+       <ion-row>
+         <ion-col size="12">
+           <ion-button color="primary" expand="block" class="pay" (click)="saveOrder()">Realizar Pago</ion-button>
+
+         </ion-col>
+       </ion-row>
+    </ion-grid>
+     
+
+
+
+</ion-content>

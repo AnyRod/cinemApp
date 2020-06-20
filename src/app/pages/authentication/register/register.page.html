@@ -13,41 +13,69 @@
     </ion-row>
 
     <!-- Login Fields -->
-    <ion-row>
-      <ion-col class="fields" size="12">
-        <ion-item class="fields__input">
-          <ion-label color="primary" position="stacked">Nombre y Apellido</ion-label>
-          <ion-input type="text" inputmode="text" placeholder="Pedro Sosa">
-            &nbsp;&nbsp;
-          </ion-input>
-        </ion-item>
-
-        <ion-item class="fields__input">
-          <ion-label color="primary" position="stacked">Correo Electronico</ion-label>
-          <ion-input type="text" inputmode="text" placeholder="someone@example.com">
-            &nbsp;&nbsp;
-          </ion-input>
-        </ion-item>
-        <ion-item class="fields__input" size="12">
-          <ion-label color="primary" position="stacked">Contraseña</ion-label>
-          <ion-input type="password" inputmode="text" placeholder="********">
-            &nbsp;&nbsp;
-          </ion-input>
-        </ion-item>
-      </ion-col>
-
-
-      <ion-col size="12">
-        <ion-button 
-        color="primary"  
-        expand="block"
-        [routerLink]="['/tabs/inicio']"
-        routerDirection="forward">
-          <span>Registrarme</span>
-        </ion-button>
-
-      </ion-col>
-    </ion-row>
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+      <ion-row>
+        <ion-col class="fields" size="12">
+          <ion-item class="fields__input">
+            
+            <ion-label color="primary" position="stacked">Nombre y Apellido</ion-label>
+            <ion-input 
+            type="text" 
+            inputmode="text"
+            name="name" 
+            required
+            minlength="2"
+            [(ngModel)]="usuario.nombre"
+            placeholder="Pedro Sosa">
+              &nbsp;&nbsp;
+            </ion-input>
+          </ion-item>
+  
+          <ion-item class="fields__input">
+            <ion-label color="primary" position="stacked">Correo Electronico</ion-label>
+            <span *ngIf="f.submitted && f.controls['email'].errors">El correo es requerido</span>
+            <ion-input 
+            type="email" 
+            inputmode="text"
+            name="email" 
+            [(ngModel)]="usuario.email" 
+            required
+            email
+            placeholder="someone@example.com">
+              &nbsp;&nbsp;
+            </ion-input>
+          </ion-item>
+          <ion-item class="fields__input" size="12">
+            <ion-label color="primary" position="stacked">Contraseña</ion-label>
+            <ion-input 
+            type="password" 
+            inputmode="text"
+            name="password"
+            required
+            minlength="6"
+            [(ngModel)]="usuario.password" 
+            placeholder="********">
+              &nbsp;&nbsp;
+            </ion-input>
+          </ion-item>
+        </ion-col>
+  
+  
+        <ion-col size="12">
+          <ion-button 
+          color="primary"  
+          expand="block"
+          type="submit"
+          [routerLink]="['/tabs/inicio']"
+          routerDirection="forward"           
+          >
+            <span>Registrarme</span>
+          </ion-button>
+  
+        </ion-col>
+      </ion-row>
+    </form>
+    
   </ion-grid>
 
 </ion-content>

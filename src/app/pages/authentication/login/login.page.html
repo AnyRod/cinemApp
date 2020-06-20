@@ -13,39 +13,62 @@
     </ion-row>
 
     <!-- Login Fields -->
-    <ion-row>
-      <ion-col class="fields" size="12">
-        <ion-item class="fields__input">
-          <ion-label color="primary" position="stacked">Correo Electronico</ion-label>
-          <ion-input type="text" inputmode="text" placeholder="someone@example.com">
-            &nbsp;&nbsp;
-          </ion-input>
-        </ion-item>
-        <ion-item class="fields__input" size="12">
-          <ion-label color="primary" position="stacked">Contraseña</ion-label>
-          <ion-input type="password" inputmode="text" placeholder="***************">
-            &nbsp;&nbsp;
-          </ion-input>
-        </ion-item>
-      </ion-col>
+    <form 
+    (ngSubmit)="login(f)" 
+     #f="ngForm">
+      <ion-row>
+        <ion-col class="fields" size="12">
+          <ion-item class="fields__input">
+            <ion-label color="primary" position="stacked">Correo Electronico</ion-label>
+            <ion-input 
+            type="email" 
+            inputmode="text"
+            name="email"
+            required
+            email 
+            [(ngModel)]="usuario.email"
+            placeholder="someone@example.com">
+              &nbsp;&nbsp;
+            </ion-input>
+          </ion-item>
+          <ion-item class="fields__input" size="12">
+            <ion-label color="primary" position="stacked">Contraseña</ion-label>
+            <ion-input 
+            type="password" 
+            inputmode="text" 
+            name="password"
+            required
+            minlength="6"
+            [(ngModel)]="usuario.password"
+            placeholder="***************">
+              &nbsp;&nbsp;
+            </ion-input>
+          </ion-item>
+        </ion-col>
+  
+        <ion-col size="12">
+          <ion-button color="primary" fill="clear" expand="block">
+            <span>¿Olvidaste tu contraseña?</span>
+          </ion-button>
+        </ion-col>
+        <ion-col size="12">
+          <ion-button 
+          color="primary"  
+          expand="block"
+          type="submit"
+          [routerLink]="['/tabs/inicio']"
+          routerDirection="forward">
+          
+            <span>Iniciar Sesion</span>
+          </ion-button>
+  
+        </ion-col>
+      </ion-row>
 
-      <ion-col size="12">
-        <ion-button color="primary" fill="clear" expand="block">
-          <span>¿Olvidaste tu contraseña?</span>
-        </ion-button>
-      </ion-col>
-      <ion-col size="12">
-        <ion-button 
-        color="primary"  
-        expand="block"
-        [routerLink]="['/tabs/inicio']"
-        routerDirection="forward">
-        
-          <span>Iniciar Sesion</span>
-        </ion-button>
 
-      </ion-col>
-    </ion-row>
+
+    </form>
+   
   </ion-grid>
 
 </ion-content>
@@ -57,6 +80,7 @@
         color="primary" 
         fill="clear" 
         expand="block"
+        type="submit"
         [routerLink]="['/register']"
         routerDirection="forward">
         <span>No tienes cuenta, registrate</span>

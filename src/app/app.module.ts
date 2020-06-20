@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -14,10 +16,12 @@ import { AppComponent } from './app.component';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment.prod';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 //Guards
 import { AccessGuard } from './guards/access.guard';
 import { SharedModule } from './shared/shared.module';
+
 
 
 
@@ -30,7 +34,10 @@ import { SharedModule } from './shared/shared.module';
       AppRoutingModule,
       AngularFireDatabaseModule,
       AngularFireModule.initializeApp(environment.firebase),
-      SharedModule
+      SharedModule,
+      FormsModule,
+      HttpClientModule,
+      AngularFirestoreModule
     ],
   providers: [
     StatusBar,

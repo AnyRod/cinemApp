@@ -15,10 +15,15 @@ const routes: Routes = [
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
   },
   {
+    path: 'orders',
+    loadChildren: () => import('./pages/orders/orders.module').then( m => m.OrdersPageModule)
+  },
+  {
     path: '', 
     redirectTo: '/login',
     pathMatch: 'full'
   }
+  
 ];
 @NgModule({
   imports: [
